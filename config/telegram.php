@@ -1,6 +1,7 @@
 <?php
 
-use Telegram\Bot\Commands\HelpCommand;
+use App\Commands\StartCommand;
+use App\Commands\HelpCommand;
 
 return [
     /*
@@ -32,17 +33,14 @@ return [
     */
     'bots' => [
         'mybot' => [
-            'token' => env('6165345473:AAHn87y8SzKtRlX7xP1sf5r9zf__R4eTdME', 'YOUR-BOT-TOKEN'),
+            'token' => env('TELEGRAM_TOKEN', '6165345473:AAHn87y8SzKtRlX7xP1sf5r9zf__R4eTdME'),
             'certificate_path' => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url' => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
             'commands' => [
-                //Acme\Project\Commands\MyTelegramBot\BotCommand::class
+                App\Commands\HelpCommand::class,
+                App\Commands\StartCommand::class
             ],
         ],
-
-        //        'mySecondBot' => [
-        //            'token' => '123456:abc',
-        //        ],
     ],
 
     /*
@@ -126,7 +124,9 @@ return [
     |
     */
     'commands' => [
-        HelpCommand::class,
+//        HelpCommand::class,
+        StartCommand::class,
+        HelpCommand::class
     ],
 
     /*
